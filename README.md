@@ -21,17 +21,18 @@ to forecast short-term gold futures prices.
 - Frequency: Daily
 
 ## Project Structure
+```
 .
-├── data/
-│   └── raw/
-├── notebooks/
-│   ├── 01_data_exploration.ipynb
-│   ├── 02_feature_engineering.ipynb
-│   └── 03_model_training.ipynb
-├── models/
-├── environment.yml
-└── README.md
-
+|- data/
+|   |- raw/
+|- notebooks/
+|   |- 01_data_exploration.ipynb
+|   |- 02_feature_engineering.ipynb
+|   |- 03_model_training.ipynb
+|- models/
+|- environment.yml
+|- README.md
+```
 ## Modeling Approach
 - Baseline: Moving Average
 - Machine Learning Models:
