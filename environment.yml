@@ -1,0 +1,14 @@
+name: gold-forecast
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - jupyter
+  - ipykernel
+  - pip
+  - pip:
+      - yfinance
