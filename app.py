@@ -15,7 +15,7 @@ st.write("LSTM Model for Gold Price Prediction Using Historical Data")
 # Load Model and Scaler (Using cache)
 @st.cache_resource
 def load_resources():
-    model = tf.keras.models.load_model('models/gold_price_lstm_model.keras')
+    model = tf.keras.models.load_model('models/gold_price_lstm_model.h5')
     scaler = joblib.load('models/gold_price_scaler.pkl')
     return model, scaler
 
