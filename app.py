@@ -7,8 +7,8 @@ import yfinance as yf
 import os
 
 # Web configuration
-st.set_page_config(page_title="Gold Price Prediction AI", page_icon="💰")
-st.title("💰 AI Gold Price Prediction")
+st.set_page_config(page_title="Gold Price Prediction AI")
+st.title("AI Gold Price Prediction")
 st.caption("Server-side Training")
 
 # Data loading
@@ -21,7 +21,7 @@ def fetch_data(ticker_symbol="GC=F"):
         else:
             raise Exception("Empty Data")
     except Exception as e:
-        csv_path = 'gold_price_dataset.csv' 
+        csv_path = 'data/raw/gold_price_dataset.csv' 
         if os.path.exists(csv_path):
             data = pd.read_csv(csv_path, index_col='Date', parse_dates=True)
             return data, "Offline (Backup CSV)"
