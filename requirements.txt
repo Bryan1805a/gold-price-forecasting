@@ -5,4 +5,4 @@ joblib
 yfinance
 matplotlib
 scikit-learn
-tensorflow-cpu
+tensorflow==2.20.0
