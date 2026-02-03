@@ -77,11 +77,11 @@ streamlit run app.py
 ## Model Architecture
 The project uses a Stacked LSTM architecture designed for time-series data:
 
-1. Input Layer: Sequence of 60 days (Features: Close Price).
-2. LSTM Layer 1: 50 Units (Return Sequences = True).
-3. Dropout: 20% (To prevent overfitting).
-4. LSTM Layer 2: 50 Units.
-5. Dense Output Layer: Predicts the next day's closing price.
+1.Input Layer: Sequence of 60 days (Features: Close Price).
+2.LSTM Layer 1: 50 Units (Return Sequences = True).
+3.Dropout: 20% (To prevent overfitting).
+4.LSTM Layer 2: 50 Units.
+5.Dense Output Layer: Predicts the next day's closing price.
 
 ## Limitations & Future Work
 - Current Limitation: The model relies heavily on historical price action (Technical Analysis) and does not yet account for macroeconomic news (e.g., Fed rates, Inflation data).
