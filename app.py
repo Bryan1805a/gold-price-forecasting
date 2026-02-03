@@ -1,3 +1,5 @@
+# Cannot upload local model to Streamlit because of version discrepancies
+# so model will be train directly on Streamlit server
 import streamlit as st
 import pandas as pd
 import numpy as np
