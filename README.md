@@ -53,23 +53,23 @@ Check out the live app here: **https://gold-price-forecasting-test.streamlit.app
 ```
 
 ## How to Run Locally
-- 1. Clone the repository:
+- 1.Clone the repository:
 ```base
 git clone [https://github.com/Bryan1805a/gold-price-forecasting.git](https://github.com/Bryan1805a/gold-price-forecasting.git)
 cd gold-price-forecasting
 ```
-- 2. Create a virtual environment (Recommended):
+- 2.Create a virtual environment (Recommended):
 ```base
 conda create -n gold-ai python=3.10
 conda activate gold-ai
 ```
 
-- 3. Install dependencies:
+- 3.Install dependencies:
 ```base
 pip install -r requirements.txt
 ```
 
-- 4. Run the App:
+- 4.Run the App:
 ```base
 streamlit run app.py
 ```
