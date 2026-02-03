@@ -8,8 +8,8 @@ import os
 
 # Web configuration
 st.set_page_config(page_title="Gold Price Prediction AI", page_icon="💰")
-st.title("💰 AI Dự Báo Giá Vàng (Gold Price Prediction)")
-st.caption("Model được huấn luyện trực tiếp trên Cloud (Server-side Training)")
+st.title("💰 AI Gold Price Prediction")
+st.caption("Server-side Training")
 
 # Data loading
 @st.cache_data(ttl=3600)
@@ -63,7 +63,7 @@ def build_and_train_model(df):
     model.compile(optimizer='adam', loss='mean_squared_error')
 
     # Training
-    with st.spinner('🤖 AI đang học bài (Training)... Vui lòng đợi 1 chút...'):
+    with st.spinner('Training model...'):
         model.fit(X, y, epochs=20, batch_size=32, verbose=0)
     
     return model, scaler
@@ -74,17 +74,17 @@ def build_and_train_model(df):
 raw_data, source = fetch_data()
 
 if raw_data is None:
-    st.error("❌ Không tìm thấy dữ liệu (Cả Online lẫn Offline). Vui lòng kiểm tra file CSV trên GitHub.")
+    st.error("Cannot find data")
     st.stop()
 else:
-    st.success(f"✅ Dữ liệu nguồn: {source}")
+    st.success(f"Data source: {source}")
 
 # Train model in Streamlit server
 try:
     model, scaler = build_and_train_model(raw_data)
-    st.success("🧠 Model đã sẵn sàng!")
+    st.success("Model ready")
 except Exception as e:
-    st.error(f"Lỗi khi training: {e}")
+    st.error(f"Error while training: {e}")
     st.stop()
 
 # Feature Engineering
@@ -96,18 +96,18 @@ def engineer_features(df):
 
 processed_data = engineer_features(raw_data)
 
-st.header("1. Biểu đồ thị trường")
-days = st.slider("Xem bao nhiêu ngày?", 100, 500, 200)
+st.header("1. Market chart")
+days = st.slider("How many days?", 100, 500, 200)
 st.line_chart(processed_data['Close'].tail(days))
 
 # Predict
-st.header("2. Dự báo ngày mai")
-if st.button("🔮 Dự đoán ngay"):
+st.header("2. Tomorrow prediction")
+if st.button("Predict now"):
     # Get last 60 days
     last_60_days = raw_data[['Close']].tail(60)
     
     if len(last_60_days) < 60:
-        st.error("Dữ liệu không đủ 60 ngày để dự đoán.")
+        st.error("Not enough 60 days.")
     else:
         # Scale
         input_data = scaler.transform(last_60_days)
@@ -123,8 +123,8 @@ if st.button("🔮 Dự đoán ngay"):
         delta = pred_price - real_price_today
         
         c1, c2 = st.columns(2)
-        c1.metric("Giá hôm nay", f"${real_price_today:.2f}")
-        c2.metric("Dự báo AI", f"${pred_price:.2f}", f"{delta:.2f}")
+        c1.metric("Today price", f"${real_price_today:.2f}")
+        c2.metric("AI Prediction", f"${pred_price:.2f}", f"{delta:.2f}")
         
         if delta > 0:
             st.balloons()
