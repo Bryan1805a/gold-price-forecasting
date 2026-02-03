@@ -53,8 +53,8 @@ def fetch_data(ticker_symbol="GC=F"):
             raise Exception("Empty")
     
     except Exception as e:
-        if os.path.exists('/data/raw/gold_price_dataset.csv'):
-            data = pd.read_csv('/data/raw/gold_price_dataset.csv', index_col='Date', parse_dates=True)
+        if os.path.exists('data/raw/gold_price_dataset.csv'):
+            data = pd.read_csv('data/raw/gold_price_dataset.csv', index_col='Date', parse_dates=True)
             return data, "Offline (Backup data)"
         else:
             return None, "Error"
@@ -107,7 +107,7 @@ if st.button("Get data and Predict"):
             prediction_real = scaler.inverse_transform(dummy)[:, 0]
 
             # Show result
-            current_price = last_60_days['Close'].iloc[-1]
+            current_price = float(last_60_days['Close'].iloc[-1])
             predicted_price = prediction_real[0]
             delta = predicted_price - current_price
 
